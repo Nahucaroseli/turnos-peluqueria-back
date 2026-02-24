@@ -18,8 +18,8 @@ public class ClientService {
     @Autowired
     private ClientRepository repo;
 
-    public List<Client> getClients() {
-        return repo.findAll();
+    public ResponseEntity<List<Client>> getClients() {
+        return ResponseEntity.ok(repo.findAll());
     }
 
     public Client addClient(Client cliente){
