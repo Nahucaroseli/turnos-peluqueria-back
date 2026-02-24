@@ -17,4 +17,8 @@ public class HairService {
     public ResponseEntity<List<ServiceHair>> getServices() {
         return ResponseEntity.ok(repo.findAll());
     }
+
+    public ResponseEntity<ServiceHair> addService(ServiceHair service){
+        return ResponseEntity.ok(repo.save(service));
+    }
 }
