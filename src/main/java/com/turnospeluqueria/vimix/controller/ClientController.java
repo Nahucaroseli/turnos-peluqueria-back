@@ -24,5 +24,10 @@ public class ClientController {
         return service.addClient(cliente);
     }
 
+    @PutMapping("/clients/{id}")
+    public Client editClient(@PathVariable Long id, @RequestBody Client client){
+        return service.editClient(id,client);
+    }
+
 
 }
