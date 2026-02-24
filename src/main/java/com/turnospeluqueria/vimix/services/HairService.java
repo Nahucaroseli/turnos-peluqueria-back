@@ -30,4 +30,15 @@ public class HairService {
         }
         return ResponseEntity.internalServerError().build();
     }
+
+
+    public ResponseEntity<ServiceHair> deleteService(Long id){
+        Optional<ServiceHair> sh = repo.findById(id);
+        if(sh.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        repo.deleteById(id);
+        return ResponseEntity.ok().build();
+
+    }
 }

@@ -30,6 +30,9 @@ public class ServiceHairController {
         return service.editService(id,s);
     }
 
-
+    @DeleteMapping("/services/{id}")
+    public ResponseEntity<ServiceHair> deleteService(@PathVariable Long id){
+        return service.deleteService(id);
+    }
 
 }
