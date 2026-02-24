@@ -22,6 +22,14 @@ public class ClientService {
         return ResponseEntity.ok(repo.findAll());
     }
 
+    public ResponseEntity<Client> getClientById(Long id){
+        Optional<Client> co = repo.findById(id);
+        if(co.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(co.get());
+    }
+
     public Client addClient(Client cliente){
         return repo.save(cliente);
     }

@@ -19,6 +19,11 @@ public class ClientController {
         return service.getClients();
     }
 
+    @GetMapping("/clients/{id}")
+    public ResponseEntity<Client> getClientById(@PathVariable Long id){
+        return service.getClientById(id);
+    }
+
 
     @PostMapping("/clients")
     public Client addClient(@RequestBody Client cliente){
