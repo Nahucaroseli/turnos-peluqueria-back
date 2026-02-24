@@ -3,6 +3,7 @@ package com.turnospeluqueria.vimix.controller;
 import com.turnospeluqueria.vimix.model.Client;
 import com.turnospeluqueria.vimix.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class ClientController {
     }
 
     @PutMapping("/clients/{id}")
-    public Client editClient(@PathVariable Long id, @RequestBody Client client){
+    public ResponseEntity<Client> editClient(@PathVariable Long id, @RequestBody Client client){
         return service.editClient(id,client);
     }
 

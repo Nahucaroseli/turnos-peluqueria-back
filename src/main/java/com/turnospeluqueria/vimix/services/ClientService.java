@@ -3,7 +3,11 @@ package com.turnospeluqueria.vimix.services;
 import com.turnospeluqueria.vimix.model.Client;
 import com.turnospeluqueria.vimix.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,14 +27,12 @@ public class ClientService {
     }
 
 
-    public Client editClient(Long id, Client cliente){
+    public ResponseEntity<Client> editClient(Long id, Client cliente){
         Optional<Client> co = repo.findById(id);
-        if(co.isPresent()){
-            if(co.get().getId().equals(cliente.getId())){
-                return repo.save(cliente);
-            }
+        if(co.isPresent() && cliente.getId()!=null){
+                return ResponseEntity.ok(repo.save(cliente));
         }
-        return null;
+        return ResponseEntity.internalServerError().build();
     }
 
 }
