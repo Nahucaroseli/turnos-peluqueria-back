@@ -30,8 +30,8 @@ public class ClientService {
         return ResponseEntity.ok(co.get());
     }
 
-    public Client addClient(Client cliente){
-        return repo.save(cliente);
+    public ResponseEntity<Client> addClient(Client cliente){
+        return ResponseEntity.ok(repo.save(cliente));
     }
 
 

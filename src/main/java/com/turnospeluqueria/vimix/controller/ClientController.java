@@ -26,7 +26,7 @@ public class ClientController {
 
 
     @PostMapping("/clients")
-    public Client addClient(@RequestBody Client cliente){
+    public ResponseEntity<Client> addClient(@RequestBody Client cliente){
         return service.addClient(cliente);
     }
 
