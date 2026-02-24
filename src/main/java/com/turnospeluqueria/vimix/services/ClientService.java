@@ -35,4 +35,14 @@ public class ClientService {
         return ResponseEntity.internalServerError().build();
     }
 
+    public ResponseEntity<Client> deleteClient(Long id){
+        Optional<Client> c = repo.findById(id);
+        if(c.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        repo.deleteById(id);
+        return ResponseEntity.ok().build();
+
+    }
+
 }
