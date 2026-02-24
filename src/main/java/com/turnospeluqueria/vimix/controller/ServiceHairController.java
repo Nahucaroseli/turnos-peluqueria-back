@@ -20,6 +20,11 @@ public class ServiceHairController {
         return service.getServices();
     }
 
+    @GetMapping("/services/{id}")
+    public ResponseEntity<ServiceHair> getServiceById(@PathVariable Long id){
+        return service.getServiceById(id);
+    }
+
     @PostMapping("/services")
     public ResponseEntity<ServiceHair> addService(@RequestBody ServiceHair s){
         return service.addService(s);

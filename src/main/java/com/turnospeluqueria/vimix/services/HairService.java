@@ -19,6 +19,15 @@ public class HairService {
         return ResponseEntity.ok(repo.findAll());
     }
 
+    public ResponseEntity<ServiceHair> getServiceById(Long id){
+        Optional<ServiceHair> sh = repo.findById(id);
+        if(sh.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(sh.get());
+
+    }
+
     public ResponseEntity<ServiceHair> addService(ServiceHair service){
         return ResponseEntity.ok(repo.save(service));
     }
