@@ -25,6 +25,11 @@ public class ServiceHairController {
         return service.addService(s);
     }
 
+    @PutMapping("/services/{id}")
+    public ResponseEntity<ServiceHair> editService(@PathVariable Long id, @RequestBody ServiceHair s){
+        return service.editService(id,s);
+    }
+
 
 
 }
