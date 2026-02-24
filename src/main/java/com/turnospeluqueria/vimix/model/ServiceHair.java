@@ -47,5 +47,5 @@ public class ServiceHair {
     public void setPrice(double price) {
         this.price = price;
     }
-    
+
 }
