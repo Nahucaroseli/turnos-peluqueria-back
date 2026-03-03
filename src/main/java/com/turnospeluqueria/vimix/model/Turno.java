@@ -14,20 +14,20 @@ public class Turno {
     private Date hora;
 
     @ManyToOne()
-    private ServiceHair serviceId;
+    private ServiceHair service;
 
     @ManyToOne()
-    private Client clientId;
+    private Client client;
 
 
     public Turno(){
-        
+
     }
 
     public Turno(Date hora, ServiceHair serviceId, Client clientId) {
         this.hora = hora;
-        this.serviceId = serviceId;
-        this.clientId = clientId;
+        this.service = serviceId;
+        this.client = clientId;
     }
 
     public void setHora(Date hora) {
@@ -35,11 +35,11 @@ public class Turno {
     }
 
     public void setServiceId(ServiceHair serviceId) {
-        this.serviceId = serviceId;
+        this.service = serviceId;
     }
 
     public void setClientId(Client clientId) {
-        this.clientId = clientId;
+        this.client = clientId;
     }
 
     public Date getHora() {
@@ -51,10 +51,10 @@ public class Turno {
     }
 
     public ServiceHair getServiceId() {
-        return serviceId;
+        return service;
     }
 
     public Client getClientId() {
-        return clientId;
+        return client;
     }
 }
