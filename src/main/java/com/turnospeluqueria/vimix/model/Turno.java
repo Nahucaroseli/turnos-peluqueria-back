@@ -16,7 +16,7 @@ public class Turno {
     @ManyToOne()
     private ServiceHair service;
 
-    @ManyToOne()
+    @ManyToOne
     private Client client;
 
 

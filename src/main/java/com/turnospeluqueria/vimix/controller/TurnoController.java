@@ -1,11 +1,11 @@
 package com.turnospeluqueria.vimix.controller;
 
+import com.turnospeluqueria.vimix.dto.TurnoDTO;
 import com.turnospeluqueria.vimix.model.Turno;
 import com.turnospeluqueria.vimix.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +23,11 @@ public class TurnoController {
     @GetMapping("/turnos")
     public ResponseEntity<List<Turno>> getTurnos(){
         return service.getTurnos();
+    }
+
+    @PostMapping("/turnos")
+    public ResponseEntity<Turno> addTurno(@RequestBody TurnoDTO t){
+        return service.addTurno(t);
     }
 
 
