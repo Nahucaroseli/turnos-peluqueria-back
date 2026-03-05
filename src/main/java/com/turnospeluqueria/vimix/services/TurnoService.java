@@ -53,5 +53,13 @@ public class TurnoService {
         return ResponseEntity.internalServerError().build();
     }
 
+    public ResponseEntity<Turno> getTurnoById(Long id){
+        Optional<Turno> turno = repo.findById(id);
+        if(turno.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(turno.get());
+    }
+
 
 }

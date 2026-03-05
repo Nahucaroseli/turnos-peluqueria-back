@@ -30,5 +30,12 @@ public class TurnoController {
         return service.addTurno(t);
     }
 
+    @GetMapping("/turnos/{id}")
+    public ResponseEntity<Turno> getTurnoById(@PathVariable Long id){
+        return service.getTurnoById(id);
+    }
+
+
+
 
 }
