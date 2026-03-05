@@ -35,7 +35,10 @@ public class TurnoController {
         return service.getTurnoById(id);
     }
 
-
+    @DeleteMapping("/turnos/{id}")
+    public ResponseEntity<Turno> deleteTurno(@PathVariable Long id){
+        return service.deleteTurno(id);
+    }
 
 
 }

@@ -61,5 +61,14 @@ public class TurnoService {
         return ResponseEntity.ok(turno.get());
     }
 
+    public ResponseEntity<Turno> deleteTurno(Long id){
+        Optional<Turno> turno = repo.findById(id);
+        if(turno.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        repo.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
 
 }
