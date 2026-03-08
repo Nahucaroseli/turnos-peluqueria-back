@@ -46,6 +46,7 @@ public class TurnoService {
         if(c.getId() != null){
             Turno turno = new Turno();
             turno.setServiceId(serviceHair.get());
+            turno.setPendiente(false);
             turno.setClientId(c);
             turno.setHora(t.getHora());
             return ResponseEntity.ok(repo.save(turno));

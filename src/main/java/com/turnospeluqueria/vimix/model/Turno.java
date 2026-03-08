@@ -1,6 +1,7 @@
 package com.turnospeluqueria.vimix.model;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 
@@ -20,8 +21,10 @@ public class Turno {
     private Client client;
 
 
-    public Turno(){
+    private boolean pendiente;
 
+
+    public Turno(){
     }
 
     public Turno(Date hora, ServiceHair serviceId, Client clientId) {
@@ -42,6 +45,8 @@ public class Turno {
         this.client = clientId;
     }
 
+    public void setPendiente(boolean p){this.pendiente = p;}
+
     public Date getHora() {
         return hora;
     }
@@ -49,6 +54,8 @@ public class Turno {
     public Long getId() {
         return id;
     }
+
+    public boolean getPendiente(){return pendiente;}
 
     public ServiceHair getServiceId() {
         return service;
