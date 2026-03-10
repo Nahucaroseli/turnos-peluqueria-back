@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,9 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate hora;
+    private LocalDate fecha;
+
+    private LocalTime hora;
 
     @ManyToOne()
     private ServiceHair service;
@@ -28,41 +31,54 @@ public class Turno {
     public Turno(){
     }
 
-    public Turno(LocalDate hora, ServiceHair serviceId, Client clientId) {
+    public Turno(LocalDate fecha, LocalTime hora, ServiceHair service, Client client) {
+        this.fecha = fecha;
         this.hora = hora;
-        this.service = serviceId;
-        this.client = clientId;
-    }
-
-    public void setHora(LocalDate hora) {
-        this.hora = hora;
-    }
-
-    public void setServiceId(ServiceHair serviceId) {
-        this.service = serviceId;
-    }
-
-    public void setClientId(Client clientId) {
-        this.client = clientId;
-    }
-
-    public void setPendiente(boolean p){this.pendiente = p;}
-
-    public LocalDate getHora() {
-        return hora;
+        this.service = service;
+        this.client = client;
     }
 
     public Long getId() {
         return id;
     }
 
-    public boolean getPendiente(){return pendiente;}
+    public LocalDate getFecha() {
+        return fecha;
+    }
 
-    public ServiceHair getServiceId() {
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public ServiceHair getService() {
         return service;
     }
 
-    public Client getClientId() {
+    public Client getClient() {
         return client;
+    }
+
+    public boolean isPendiente() {
+        return pendiente;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+    public void setService(ServiceHair service) {
+        this.service = service;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setPendiente(boolean pendiente) {
+        this.pendiente = pendiente;
     }
 }

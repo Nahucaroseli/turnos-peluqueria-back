@@ -1,6 +1,6 @@
 package com.turnospeluqueria.vimix.controller;
 
-import com.turnospeluqueria.vimix.dto.TurnoDTO;
+import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
 import com.turnospeluqueria.vimix.model.Turno;
 import com.turnospeluqueria.vimix.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class TurnoController {
     }
 
     @PostMapping("/turnos")
-    public ResponseEntity<Turno> addTurno(@RequestBody TurnoDTO t){
+    public ResponseEntity<Turno> addTurno(@RequestBody ReservaTurnoDTO t){
         return service.addTurno(t);
     }
 

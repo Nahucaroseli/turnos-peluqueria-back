@@ -1,6 +1,7 @@
 package com.turnospeluqueria.vimix.services;
 
 
+import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
 import com.turnospeluqueria.vimix.dto.TurnoDTO;
 import com.turnospeluqueria.vimix.model.Client;
 import com.turnospeluqueria.vimix.model.ServiceHair;
@@ -35,7 +36,7 @@ public class TurnoService {
         return ResponseEntity.ok(repo.findAll());
     }
 
-    public ResponseEntity<Turno> addTurno(TurnoDTO t){
+    public ResponseEntity<Turno> addTurno(ReservaTurnoDTO t){
         Optional<ServiceHair> serviceHair = repository.findById(t.getService());
         System.out.println(t.getService());
         if(serviceHair.isEmpty()){
@@ -45,9 +46,10 @@ public class TurnoService {
 
         if(c.getId() != null){
             Turno turno = new Turno();
-            turno.setServiceId(serviceHair.get());
+            turno.setService(serviceHair.get());
             turno.setPendiente(false);
-            turno.setClientId(c);
+            turno.setClient(c);
+            turno.setFecha(t.getFecha());
             turno.setHora(t.getHora());
             return ResponseEntity.ok(repo.save(turno));
         }
