@@ -2,7 +2,6 @@ package com.turnospeluqueria.vimix.services;
 
 
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
-import com.turnospeluqueria.vimix.dto.TurnoDTO;
 import com.turnospeluqueria.vimix.model.Client;
 import com.turnospeluqueria.vimix.model.ServiceHair;
 import com.turnospeluqueria.vimix.model.Turno;
