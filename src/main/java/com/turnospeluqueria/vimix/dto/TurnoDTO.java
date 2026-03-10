@@ -4,23 +4,24 @@ import com.turnospeluqueria.vimix.model.Client;
 import com.turnospeluqueria.vimix.model.ServiceHair;
 import jakarta.persistence.ManyToOne;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class TurnoDTO {
 
-    private Date hora;
+    private LocalDate hora;
 
     private Long service;
 
     private Client client;
 
-    public TurnoDTO(Date hora, Long serviceId, Client clientId) {
+    public TurnoDTO(LocalDate hora, Long serviceId, Client clientId) {
         this.hora = hora;
         this.service = serviceId;
         this.client = clientId;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(LocalDate hora) {
         this.hora = hora;
     }
 
@@ -32,7 +33,7 @@ public class TurnoDTO {
         this.client = client;
     }
 
-    public Date getHora() {
+    public LocalDate getHora() {
         return hora;
     }
 

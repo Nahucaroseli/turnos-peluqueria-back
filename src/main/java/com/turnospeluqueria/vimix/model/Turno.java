@@ -3,6 +3,7 @@ package com.turnospeluqueria.vimix.model;
 import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date hora;
+    private LocalDate hora;
 
     @ManyToOne()
     private ServiceHair service;
@@ -27,13 +28,13 @@ public class Turno {
     public Turno(){
     }
 
-    public Turno(Date hora, ServiceHair serviceId, Client clientId) {
+    public Turno(LocalDate hora, ServiceHair serviceId, Client clientId) {
         this.hora = hora;
         this.service = serviceId;
         this.client = clientId;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(LocalDate hora) {
         this.hora = hora;
     }
 
@@ -47,7 +48,7 @@ public class Turno {
 
     public void setPendiente(boolean p){this.pendiente = p;}
 
-    public Date getHora() {
+    public LocalDate getHora() {
         return hora;
     }
 
