@@ -2,6 +2,7 @@ package com.turnospeluqueria.vimix.services;
 
 
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
+import com.turnospeluqueria.vimix.dto.TurnoDisponibleDTO;
 import com.turnospeluqueria.vimix.model.Client;
 import com.turnospeluqueria.vimix.model.ServiceHair;
 import com.turnospeluqueria.vimix.model.Turno;
@@ -12,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,5 +76,34 @@ public class TurnoService {
         return ResponseEntity.ok().build();
     }
 
+
+    public ResponseEntity<TurnoDisponibleDTO> getTurnosDisponibles(LocalDate fecha){
+        List<LocalTime> horarios = generarHorarios();
+        List<LocalTime> ocupados = repo.findHorariosByFecha(fecha);
+        TurnoDisponibleDTO dto = new TurnoDisponibleDTO();
+        dto.setFecha(fecha);
+        for(LocalTime l:horarios){
+            if(!ocupados.contains(l)){
+                dto.addHorarios(l);
+            }
+        }
+        return ResponseEntity.ok(dto);
+    }
+
+
+    private List<LocalTime> generarHorarios(){
+        List<LocalTime> horarios = new ArrayList<>();
+
+        LocalTime inicio = LocalTime.of(9,0);
+        LocalTime fin = LocalTime.of(18,0);
+
+        while(inicio.isBefore(fin)){
+            horarios.add(inicio);
+            inicio = inicio.plusMinutes(30);
+        }
+
+        return horarios;
+
+    }
 
 }

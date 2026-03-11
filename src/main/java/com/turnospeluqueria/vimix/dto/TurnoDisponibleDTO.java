@@ -13,6 +13,7 @@ public class TurnoDisponibleDTO {
 
 
     public TurnoDisponibleDTO() {
+        horarios = new ArrayList<>();
     }
 
     public void addHorarios(LocalTime h){
@@ -27,7 +28,7 @@ public class TurnoDisponibleDTO {
     }
 
     public List<LocalTime> getHorarios() {
-        return new ArrayList<>(horarios);
+        return horarios;
     }
 
 
