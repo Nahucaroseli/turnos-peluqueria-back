@@ -1,12 +1,14 @@
 package com.turnospeluqueria.vimix.controller;
 
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
+import com.turnospeluqueria.vimix.dto.TurnoDisponibleDTO;
 import com.turnospeluqueria.vimix.model.Turno;
 import com.turnospeluqueria.vimix.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,6 +40,11 @@ public class TurnoController {
     @DeleteMapping("/turnos/{id}")
     public ResponseEntity<Turno> deleteTurno(@PathVariable Long id){
         return service.deleteTurno(id);
+    }
+
+    @GetMapping("/turnos/disponibles")
+    public ResponseEntity<TurnoDisponibleDTO> getTurnosDisponibles(@RequestParam LocalDate fecha){
+        return service.getTurnosDisponibles(fecha);
     }
 
 
