@@ -16,4 +16,12 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
     @Query("SELECT t.hora FROM Turno t WHERE t.fecha=:fecha")
     List<LocalTime> findHorariosByFecha(@Param("fecha")LocalDate fecha);
 
+    //Agregar query
+    int findCantTurnosLastMonth();
+    
+    //Agregar query
+    int findCantTurnosYear();
+    //Agregar query
+
+    int findCantTurnosDay();
 }

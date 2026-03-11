@@ -1,6 +1,7 @@
 package com.turnospeluqueria.vimix.services;
 
 
+import com.turnospeluqueria.vimix.dto.EstadisticasTurnoDTO;
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
 import com.turnospeluqueria.vimix.dto.TurnoDisponibleDTO;
 import com.turnospeluqueria.vimix.model.Client;
@@ -87,6 +88,17 @@ public class TurnoService {
                 dto.addHorarios(l);
             }
         }
+        return ResponseEntity.ok(dto);
+    }
+
+    public ResponseEntity<EstadisticasTurnoDTO> getEstadisticasTurno(){
+        int cantTurnosMes = repo.findCantTurnosLastMonth();
+        int cantTurnosAnio = repo.findCantTurnosYear();
+        int cantTurnosDia = repo.findCantTurnosDay();
+        EstadisticasTurnoDTO dto = new EstadisticasTurnoDTO();
+        dto.setCantTurnosAnio(cantTurnosAnio);
+        dto.setCantTurnosDia(cantTurnosDia);
+        dto.setCantTurnosMes(cantTurnosMes);
         return ResponseEntity.ok(dto);
     }
 

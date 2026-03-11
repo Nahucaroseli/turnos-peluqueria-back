@@ -1,5 +1,6 @@
 package com.turnospeluqueria.vimix.controller;
 
+import com.turnospeluqueria.vimix.dto.EstadisticasTurnoDTO;
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
 import com.turnospeluqueria.vimix.dto.TurnoDisponibleDTO;
 import com.turnospeluqueria.vimix.model.Turno;
@@ -45,6 +46,11 @@ public class TurnoController {
     @GetMapping("/turnos/disponibles")
     public ResponseEntity<TurnoDisponibleDTO> getTurnosDisponibles(@RequestParam LocalDate fecha){
         return service.getTurnosDisponibles(fecha);
+    }
+
+    @GetMapping("/turnos/estadisticas")
+    public ResponseEntity<EstadisticasTurnoDTO> getEstadisticasTurnos(){
+        return service.getEstadisticasTurnos();
     }
 
 
