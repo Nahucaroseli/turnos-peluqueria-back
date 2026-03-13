@@ -91,7 +91,7 @@ public class TurnoService {
         return ResponseEntity.ok(dto);
     }
 
-    public ResponseEntity<EstadisticasTurnoDTO> getEstadisticasTurno(){
+    public ResponseEntity<EstadisticasTurnoDTO> getEstadisticasTurnos(){
         int cantTurnosMes = repo.findCantTurnosLastMonth();
         int cantTurnosAnio = repo.findCantTurnosYear();
         int cantTurnosDia = repo.findCantTurnosDay();

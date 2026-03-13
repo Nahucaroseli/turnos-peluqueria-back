@@ -18,7 +18,7 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
 
     //Agregar query
     int findCantTurnosLastMonth();
-    
+
     //Agregar query
     int findCantTurnosYear();
     //Agregar query
