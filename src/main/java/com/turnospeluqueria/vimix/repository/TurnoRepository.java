@@ -16,14 +16,14 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
     @Query("SELECT t.hora FROM Turno t WHERE t.fecha=:fecha")
     List<LocalTime> findHorariosByFecha(@Param("fecha")LocalDate fecha);
 
-    @Query(nativeQuery = true, value="Select count(*) from turnos where fecha >= date_trunc('month', current_date -" +
+    @Query(nativeQuery = true, value="Select count(*) from turno where fecha >= date_trunc('month', current_date -" +
             "interval '1' month) and fecha < date_trunc('month',current_date)")
     int findCantTurnosLastMonth();
 
-    @Query(nativeQuery = true, value = "Select count(*) from turnos")
+    @Query(nativeQuery = true, value = "Select count(*) from turno")
     int findCantTurnosYear();
 
-    @Query(nativeQuery = true, value = "Select count(*) from turnos where fecha >= date_trunc('day', current_date)" +
+    @Query(nativeQuery = true, value = "Select count(*) from turno where fecha >= date_trunc('day', current_date)" +
             "and fecha < date_trunc('day', current_date + interval '1 day')")
     int findCantTurnosDay();
 
