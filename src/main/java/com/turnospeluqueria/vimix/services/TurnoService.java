@@ -46,7 +46,12 @@ public class TurnoService {
         if(serviceHair.isEmpty()){
             return ResponseEntity.internalServerError().build();
         }
-        Client c = repositoryClient.save(t.getClient());
+        Client newClient = new Client();
+
+        newClient.setName(t.getName());
+        newClient.setPhone(t.getPhone());
+
+        Client c = repositoryClient.save(newClient);
 
         if(c.getId() != null){
             Turno turno = new Turno();

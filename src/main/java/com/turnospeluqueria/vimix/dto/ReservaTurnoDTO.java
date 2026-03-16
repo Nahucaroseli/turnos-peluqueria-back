@@ -13,22 +13,20 @@ public class ReservaTurnoDTO {
 
     private Long service;
 
-    private Client client;
+    private String name;
 
-    public ReservaTurnoDTO(LocalDate fecha, LocalTime hora, Long service, Client client) {
+    private String phone;
+
+    public ReservaTurnoDTO(LocalDate fecha, LocalTime hora, Long service, String name, String phone) {
         this.fecha = fecha;
         this.hora = hora;
         this.service = service;
-        this.client = client;
+        this.name = name;
+        this.phone = phone;
     }
-
 
     public LocalDate getFecha() {
         return fecha;
-    }
-
-    public Client getClient() {
-        return client;
     }
 
     public LocalTime getHora() {
@@ -37,6 +35,14 @@ public class ReservaTurnoDTO {
 
     public Long getService() {
         return service;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setFecha(LocalDate fecha) {
@@ -51,7 +57,11 @@ public class ReservaTurnoDTO {
         this.service = service;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
