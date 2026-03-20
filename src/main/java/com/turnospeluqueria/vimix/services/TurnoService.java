@@ -1,6 +1,7 @@
 package com.turnospeluqueria.vimix.services;
 
 
+import com.turnospeluqueria.vimix.dto.EdicionTurnoDTO;
 import com.turnospeluqueria.vimix.dto.EstadisticasTurnoDTO;
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
 import com.turnospeluqueria.vimix.dto.TurnoDisponibleDTO;
@@ -27,7 +28,7 @@ public class TurnoService {
     private TurnoRepository repo;
 
     @Autowired
-    private ServiceHairRepository repository;
+    private ServiceHairRepository repositoryService;
 
     @Autowired
     private ClientRepository repositoryClient;
@@ -41,7 +42,7 @@ public class TurnoService {
     }
 
     public ResponseEntity<Turno> addTurno(ReservaTurnoDTO t){
-        Optional<ServiceHair> serviceHair = repository.findById(t.getService());
+        Optional<ServiceHair> serviceHair = repositoryService.findById(t.getService());
         System.out.println(t.getService());
         if(serviceHair.isEmpty()){
             return ResponseEntity.internalServerError().build();
@@ -105,6 +106,24 @@ public class TurnoService {
         dto.setCantTurnosDia(cantTurnosDia);
         dto.setCantTurnosMes(cantTurnosMes);
         return ResponseEntity.ok(dto);
+    }
+
+
+    public ResponseEntity<Turno> editTurno(Long id, EdicionTurnoDTO t){
+        Optional<Turno> turnoExiste = repo.findById(id);
+        Optional<ServiceHair> servicioExiste = repositoryService.findById(t.getService());
+
+        if(turnoExiste.isEmpty() && servicioExiste.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        turnoExiste.get().setFecha(t.getFecha());
+        turnoExiste.get().setService(servicioExiste.get());
+        turnoExiste.get().setHora(t.getHora());
+
+        return ResponseEntity.ok(repo.save(turnoExiste.get()));
+
+
     }
 
 

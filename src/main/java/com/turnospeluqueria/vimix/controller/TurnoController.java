@@ -1,5 +1,6 @@
 package com.turnospeluqueria.vimix.controller;
 
+import com.turnospeluqueria.vimix.dto.EdicionTurnoDTO;
 import com.turnospeluqueria.vimix.dto.EstadisticasTurnoDTO;
 import com.turnospeluqueria.vimix.dto.ReservaTurnoDTO;
 import com.turnospeluqueria.vimix.dto.TurnoDisponibleDTO;
@@ -51,6 +52,11 @@ public class TurnoController {
     @GetMapping("/turnos/estadisticas")
     public ResponseEntity<EstadisticasTurnoDTO> getEstadisticasTurnos(){
         return service.getEstadisticasTurnos();
+    }
+
+    @PatchMapping("/turnos/{id}")
+    public ResponseEntity<Turno> editTurno(@PathVariable Long id,@RequestBody EdicionTurnoDTO t){
+        return service.editTurno(id,t);
     }
 
 
