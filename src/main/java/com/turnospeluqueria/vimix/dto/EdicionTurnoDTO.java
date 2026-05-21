@@ -14,12 +14,15 @@ public class EdicionTurnoDTO {
 
     private Long service;
 
+    private boolean pendiente;
 
-    public EdicionTurnoDTO(LocalDate fecha, LocalTime hora, Long service, Long idTurno) {
+
+    public EdicionTurnoDTO(LocalDate fecha, LocalTime hora, Long service, Long idTurno, boolean pendiente) {
         this.fecha = fecha;
         this.hora = hora;
         this.service = service;
         this.idTurno = idTurno;
+        this.pendiente = pendiente;
     }
 
 
@@ -33,5 +36,9 @@ public class EdicionTurnoDTO {
 
     public Long getService() {
         return service;
+    }
+
+    public boolean getPendiente(){
+        return pendiente;
     }
 }

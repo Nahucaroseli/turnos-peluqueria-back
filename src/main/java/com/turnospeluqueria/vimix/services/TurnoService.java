@@ -120,6 +120,7 @@ public class TurnoService {
         turnoExiste.get().setFecha(t.getFecha());
         turnoExiste.get().setService(servicioExiste.get());
         turnoExiste.get().setHora(t.getHora());
+        turnoExiste.get().setPendiente(t.getPendiente());
 
         return ResponseEntity.ok(repo.save(turnoExiste.get()));
 
